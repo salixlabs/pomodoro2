@@ -1,5 +1,5 @@
-let workTimeMinutes = 1;
-let breakTimeMinutes = 1;
+let workTimeMinutes = .5;
+let breakTimeMinutes = .25;
 let timeLeft = workTimeMinutes * 60;
 let timerId = null;
 let isWorkTime = true;
@@ -10,6 +10,9 @@ const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
 const modeText = document.getElementById('mode-text');
+const toggleButton = document.getElementById('toggle-mode');
+const workStatus = document.getElementById('work-status');
+const breakStatus = document.getElementById('break-status');
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -49,16 +52,14 @@ function resetTimer() {
 function switchMode() {
     isWorkTime = !isWorkTime;
     timeLeft = isWorkTime ? workTimeMinutes * 60 : breakTimeMinutes * 60;
-    modeText.textContent = isWorkTime ? 'WORK TIME' : 'BREAK TIME';
     
-    // Update mode display styling
-    const modeDiv = document.querySelector('.mode');
+    // Update status indicators
     if (isWorkTime) {
-        modeDiv.classList.remove('break-mode');
-        modeDiv.classList.add('work-mode');
+        workStatus.classList.add('active');
+        breakStatus.classList.remove('active');
     } else {
-        modeDiv.classList.remove('work-mode');
-        modeDiv.classList.add('break-mode');
+        workStatus.classList.remove('active');
+        breakStatus.classList.add('active');
     }
     
     // Change background color based on mode
@@ -86,9 +87,17 @@ function setBreakTime(minutes) {
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
+toggleButton.addEventListener('click', () => {
+    if (timerId === null) {
+        switchMode();
+    }
+});
 
 // Initialize display
 updateDisplay();
 
 // Add initial class when page loads
-document.querySelector('.mode').classList.add('work-mode'); 
+document.querySelector('.mode').classList.add('work-mode');
+
+// Add this after the other initializations
+workStatus.classList.add('active'); // Initialize work status as active 
