@@ -10,7 +10,7 @@ const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
 const modeText = document.getElementById('mode-text');
-const toggleButton = document.getElementById('toggle-mode');
+const modeToggle = document.getElementById('mode-checkbox');
 const workStatus = document.getElementById('work-status');
 const breakStatus = document.getElementById('break-status');
 
@@ -20,6 +20,9 @@ function updateDisplay() {
     
     minutesDisplay.textContent = minutes.toString().padStart(2, '0');
     secondsDisplay.textContent = seconds.toString().padStart(2, '0');
+    
+    const mode = isWorkTime ? 'Work' : 'Break';
+    document.title = `${minutes}:${seconds.toString().padStart(2, '0')} ${mode} - Pomodoro`;
 }
 
 function startTimer() {
@@ -53,14 +56,8 @@ function switchMode() {
     isWorkTime = !isWorkTime;
     timeLeft = isWorkTime ? workTimeMinutes * 60 : breakTimeMinutes * 60;
     
-    // Update status indicators
-    if (isWorkTime) {
-        workStatus.classList.add('active');
-        breakStatus.classList.remove('active');
-    } else {
-        workStatus.classList.remove('active');
-        breakStatus.classList.add('active');
-    }
+    // Sync checkbox with current mode
+    modeToggle.checked = !isWorkTime;
     
     // Change background color based on mode
     document.body.style.backgroundColor = isWorkTime ? '#426dbc' : '#498858';
@@ -87,9 +84,12 @@ function setBreakTime(minutes) {
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
-toggleButton.addEventListener('click', () => {
+modeToggle.addEventListener('change', () => {
     if (timerId === null) {
         switchMode();
+    } else {
+        // If timer is running, revert the toggle
+        modeToggle.checked = isWorkTime ? false : true;
     }
 });
 
@@ -101,3 +101,6 @@ document.querySelector('.mode').classList.add('work-mode');
 
 // Add this after the other initializations
 workStatus.classList.add('active'); // Initialize work status as active 
+
+// Make sure checkbox starts unchecked (work mode)
+modeToggle.checked = false; 
