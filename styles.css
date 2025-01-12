@@ -202,4 +202,117 @@ input:checked + .slider .work {
 
 input:not(:checked) + .slider .break {
     color: #666;  /* Inactive break text in gray */
+}
+
+.mode-message {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: color 0.4s ease;
+}
+
+/* Colors will be controlled by JavaScript */ 
+
+.time-adjust {
+    margin-top: 1rem;
+}
+
+#add-time {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    border: 2px solid;
+}
+
+/* Colors will match current mode */
+#add-time.work-mode {
+    color: #426dbc;
+    border-color: #426dbc;
+}
+
+#add-time.break-mode {
+    color: #498858;
+    border-color: #498858;
+}
+
+#add-time:hover {
+    opacity: 0.8;
+} 
+
+.focus-task {
+    font-size: 1.2rem;
+    color: #426dbc;
+    margin: 1rem 0;
+    min-height: 1.5rem;  /* Preserve space even when empty */
+    font-weight: 500;
+} 
+
+h1 {
+    margin-top: 3rem;  /* Add space above the title */
+} 
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    color: #426dbc;
+    margin-bottom: 1.5rem;
+}
+
+#focus-input {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    width: 300px;
+    margin-bottom: 1rem;
+    border: 2px solid #426dbc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#focus-input:focus {
+    box-shadow: 0 0 0 2px rgba(66, 109, 188, 0.2);
+}
+
+#focus-submit {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #426dbc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#focus-submit:hover {
+    opacity: 0.9;
+} 
+
+.hint-text {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 1rem;
 } 
