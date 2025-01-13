@@ -9,3 +9,5 @@ This is a simple Pomodoro Timer built with HTML, CSS, and JavaScript. It allows 
 - Display the remaining time in minutes and seconds
 - Start, pause, and reset the timer
 - Can work on desktop or mobile
+- Successfuly deployed to github pages
+- Working on this project from multiple local machines, using GitHub as a remote repository
