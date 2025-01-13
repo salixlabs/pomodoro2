@@ -34,14 +34,12 @@ function updateDisplay() {
 }
 
 function startTimer() {
-    if (timerId === null) {
+    if (timerId === null && pauseButton.textContent !== 'Resume') {  // Only ask for focus if not resuming
         if (isWorkTime) {
-            console.log('Opening modal');
             focusModal.style.display = 'flex';
             focusInput.focus();
-            return;  // Don't start timer until focus is set
+            return;
         }
-        
         startTimerCountdown();
     }
 }
@@ -60,8 +58,14 @@ function startTimerCountdown() {
 }
 
 function pauseTimer() {
-    clearInterval(timerId);
-    timerId = null;
+    if (timerId !== null) {  // If timer is running
+        clearInterval(timerId);
+        timerId = null;
+        pauseButton.textContent = 'Resume';
+    } else {  // If timer is paused
+        startTimerCountdown();  // Resume without asking for focus
+        pauseButton.textContent = 'Pause';
+    }
 }
 
 function resetTimer() {
@@ -69,6 +73,7 @@ function resetTimer() {
     timerId = null;
     timeLeft = isWorkTime ? workTimeMinutes * 60 : breakTimeMinutes * 60;
     focusTaskDisplay.textContent = '';  // Clear focus task on reset
+    pauseButton.textContent = 'Pause';  // Reset pause button text
     updateDisplay();
 }
 

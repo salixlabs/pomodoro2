@@ -10,17 +10,29 @@ body {
 }
 
 .container {
-    position: relative;  /* For absolute positioning of toggle */
+    position: relative;
     text-align: center;
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+/* Add media query for mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+        margin: 0.8rem;
+    }
 }
 
 .timer {
     font-size: 4rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
 .controls button {
@@ -251,8 +263,8 @@ input:not(:checked) + .slider .break {
 .focus-task {
     font-size: 1.2rem;
     color: #426dbc;
-    margin: 1rem 0;
-    min-height: 1.5rem;  /* Preserve space even when empty */
+    margin: 0.5rem 0;
+    min-height: 1.5rem;
     font-weight: 500;
 } 
 
