@@ -44,8 +44,13 @@ body {
 }
 
 #reset {
-    background-color: #f44336;  /* Red */
-    color: white;
+    background-color: transparent;
+    color: #f44336;  /* Red text */
+    border: 2px solid #f44336;  /* Red outline */
+}
+
+#reset:hover {
+    background-color: rgba(244, 67, 54, 0.1);  /* Very light red background on hover */
 }
 
 #toggle-mode {
