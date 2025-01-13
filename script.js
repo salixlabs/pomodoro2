@@ -86,6 +86,9 @@ function switchMode() {
         focusTaskDisplay.textContent = '';
     }
     
+    // Reset pause button state
+    pauseButton.textContent = 'Pause';
+    
     // Sync checkbox with current mode
     modeToggle.checked = !isWorkTime;
     
