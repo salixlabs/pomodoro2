@@ -1,3 +1,5 @@
+const VERSION = '1.3.0';  // Update this when you push new versions
+
 let workTimeMinutes = 25;
 let breakTimeMinutes = 5;
 let timeLeft = workTimeMinutes * 60;
@@ -16,6 +18,8 @@ const focusTaskDisplay = document.querySelector('.focus-task');
 const focusModal = document.getElementById('focus-modal');
 const focusInput = document.getElementById('focus-input');
 const focusSubmit = document.getElementById('focus-submit');
+const versionDisplay = document.querySelector('.version-info');
+versionDisplay.textContent = `v${VERSION}`;
 console.log('Focus submit button:', focusSubmit);
 addTimeButton.className = 'work-mode';  // Set initial style immediately
 addTimeButton.style.color = '#426dbc';  // Set initial color immediately
