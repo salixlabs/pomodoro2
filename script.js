@@ -1,5 +1,5 @@
-let workTimeMinutes = .5;
-let breakTimeMinutes = .25;
+let workTimeMinutes = 25;
+let breakTimeMinutes = 5;
 let timeLeft = workTimeMinutes * 60;
 let timerId = null;
 let isWorkTime = true;
